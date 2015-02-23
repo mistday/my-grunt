@@ -4,6 +4,9 @@ module.exports = function(grunt) {
       compile: {
         files: {
           'css/style.css': 'styl/main.styl'
+        },
+        options: {
+          compress: true
         }
       }
     }
