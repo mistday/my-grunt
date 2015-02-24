@@ -32,6 +32,19 @@ module.exports = function(grunt) {
         dest: 'dist/js/',
         ext: '.js'
       }
+    },
+    jade: {
+      compile: {
+        options: {
+          data: {
+            debug: false
+          },
+          pretty: true 
+        },
+        files: {
+          "dist/index.html": ["src/index.jade"]
+        }
+      }
     }
   });
 
@@ -39,4 +52,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-coffee');
+  grunt.loadNpmTasks('grunt-contrib-jade');
 }

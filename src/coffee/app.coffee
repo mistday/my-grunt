@@ -1,1 +1,5 @@
-main -> 1 + 1
+# helloWorld = ->
+#   console.log('Hello world!')
+
+
+#  my slider
