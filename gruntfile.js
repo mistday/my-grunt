@@ -6,7 +6,7 @@ module.exports = function(grunt) {
           'dist/css/style.css': 'src/styl/main.styl'
         },
         options: {
-          compress: true
+          compress: false
         }
       }
     },
@@ -45,6 +45,15 @@ module.exports = function(grunt) {
           "dist/index.html": ["src/index.jade"]
         }
       }
+    },
+    watch: {
+      scripts: {
+        files: ['src/styl/*.styl'],
+        tasks: ['stylus'],
+        options: {
+          spawn: false,
+        },
+      },
     }
   });
 
@@ -53,4 +62,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 }
