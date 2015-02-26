@@ -1,3 +1,44 @@
+// variable
+column = 12
+width = 960px
+
+marginV = 2px
+marginH = 10px
+widthBlock = width / column - marginH * 2
+
+// style
 @import 'nib'
-div
-  border-radious: 5px
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+
+.container
+  width: 960px
+  margin: auto
+  background: #cfc
+  div
+    border: 1px solid red
+    height: 50px
+.row
+  margin-bottom marginV
+  border: none !important
+  &:after
+    content: ''
+    display: table
+    clear: both
+
+for num in 1..column
+  .grid-{num}
+    margin: 0 marginH
+    float: left
+
+for num in 1..column
+  .grid-{num}
+    width: widthBlock*num+(marginH*2)*(num - 1)
+    
+for num in 1...column
+  .offset-{num}
+    margin-left: widthBlock*num+(marginH*2)*(num - 1)+marginH*3
