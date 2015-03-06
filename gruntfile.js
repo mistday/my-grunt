@@ -46,10 +46,32 @@ module.exports = function(grunt) {
         }
       }
     },
+    uglify: {
+      options: {
+        mangle: {
+          except: ['jQuery']
+        }
+      },
+      my_target: {
+        files: [{
+          expand: true,
+          cwd: 'dist/js',
+          src: '**/*.js',
+          dest: 'dest/js'
+        }]
+      }
+    },
     watch: {
-      scripts: {
+      stylus: {
         files: ['src/styl/*.styl'],
         tasks: ['stylus'],
+        options: {
+          spawn: false,
+        },
+      },
+      coffee: {
+        files: ['src/coffee/*.coffee'],
+        tasks: ['coffee'],
         options: {
           spawn: false,
         },
@@ -57,10 +79,17 @@ module.exports = function(grunt) {
     }
   });
 
-
+  //load tasks
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+
+  //register tasks
+  grunt.registerTask('prod', ['imagemin', 'uglify']);
+  grunt.registerTask('dev', ['stylus', 'coffee']);
+  grunt.registerTask('default', ['watch']);
+
 }
