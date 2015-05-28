@@ -61,6 +61,13 @@ module.exports = function(grunt) {
         }]
       }
     },
+    sprite: {
+      all: {
+        src: 'dist/img/*.png',
+        dest: 'dist/img/sprites/sprites.png',
+        destCss: 'src/styl/sprites.styl'
+      }
+    },
     watch: {
       stylus: {
         files: ['src/styl/*.styl'],
@@ -86,8 +93,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jade');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-spritesmith');
 
   //register tasks
+  grunt.registerTask('pre', ['sprite', 'stylus']);
   grunt.registerTask('prod', ['imagemin', 'uglify']);
   grunt.registerTask('dev', ['stylus', 'coffee']);
   grunt.registerTask('default', ['watch']);
